@@ -1,0 +1,30 @@
+import config from '@/app/config';
+import jwt, { JwtPayload, SignOptions } from 'jsonwebtoken';
+
+const createToken = (
+  payload: Record<string, unknown>,
+  secret: string,
+  expireTime: string,
+): string => {
+  return jwt.sign(payload, secret, {
+    algorithm: 'HS256',
+    expiresIn: expireTime,
+  } as SignOptions);
+};
+
+const verifyToken = (token: string, secret: string): JwtPayload => {
+  return jwt.verify(token, secret) as JwtPayload;
+};
+
+const createPasswordResetToken = (payload: object) => {
+  return jwt.sign(payload, String(config.jwt.access_secret), {
+    algorithm: 'HS256',
+    expiresIn: config.jwt.passwordResetTokenExpirationTime,
+  } as SignOptions);
+};
+
+export const jwtHelpers = {
+  createToken,
+  verifyToken,
+  createPasswordResetToken,
+};
