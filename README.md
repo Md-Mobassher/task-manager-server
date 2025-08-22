@@ -1,8 +1,8 @@
-# CGCS-server
+# Task Manager Server
 
 ## Deployment
 
-- **Live Link**: [Live server link]()
+- **Live Link**: [Live server link](https://task-management-server-eight-khaki.vercel.app)
 
 ## Postman API Documentation:
 
@@ -62,7 +62,7 @@ npx prisma generate
 6. **Generate migration:**
 
 ```shell
-npx prisma migrate dev
+npx prisma db push
 for prod
 npx prisma migrate deploy
 ```

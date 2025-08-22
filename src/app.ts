@@ -15,8 +15,7 @@ const app: Application = express();
 // ✅ 1. Configure CORS dynamically using env variables
 const allowedOrigins = process.env.CORS_ORIGIN?.split(',') || [
   'http://localhost:3000',
-  'https://cgcsbd.com',
-  'https://cgcsbd.vercel.app',
+  'https://task-management-frontend-4eu6176su.vercel.app',
 ];
 
 app.use(cors());
