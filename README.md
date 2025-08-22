@@ -33,7 +33,7 @@ git clone <repository-link>
 cd <project_name>
 ```
 
-3. Please update the filename from `.env.example` to `.env` and Fill your own data
+3. Please update the filename from `.env.example` to `.env` and Fill your own data
 
 4. **Install Dependencies:**
 
@@ -63,8 +63,7 @@ npx prisma generate
 
 ```shell
 npx prisma db push
-for prod
-npx prisma migrate deploy
+
 ```
 
 7. **Start the Server:**
@@ -85,7 +84,53 @@ or
 npm run dev
 ```
 
-The server will be running at **`http://localhost:5000`** .
+The server will be running at **`http://localhost:5000`** .
+
+## Setup Steps
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- MongoDB database
+- Git
+
+### Environment Configuration
+
+1. Copy `.env.example` to `.env`
+2. Configure the following environment variables:
+   - `DATABASE_URL`: Your MongoDB connection string
+   - `JWT_SECRET`: Secret key for JWT token generation
+   - `PORT`: Server port (default: 5000)
+
+### Database Setup
+
+1. Ensure MongoDB is running
+2. Run `npx prisma generate` to generate Prisma client
+3. Run `npx prisma db push` to sync database schema
+
+## Approach
+
+This task management server follows a **RESTful API architecture** with the following key design decisions:
+
+- **TypeScript**: For type safety and better development experience
+- **Prisma ORM**: For database operations with auto-generated types
+- **JWT Authentication**: Secure user authentication and authorization
+- **Zod Validation**: Runtime type validation for request/response data
+- **Modular Structure**: Separated routes, controllers, and services for maintainability
+- **Error Handling**: Centralized error handling with appropriate HTTP status codes
+- **Input Validation**: Comprehensive validation using Zod schemas
+
+The server implements CRUD operations for tasks with user authentication, ensuring data isolation between users.
+
+## Time Taken
+
+**Total Development Time: 3-4 hours**
+
+- **Planning & Setup**: 30 minutes
+- **Database Schema Design**: 30 minutes
+- **API Development**: 1.5-2 hours
+- **Testing & Debugging**: 30 minutes
+- **Documentation & Deployment**: 30 minutes
 
 ## Contributing
 
